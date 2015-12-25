@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<title>open</title>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js">
-    	</script>
-    	<!-- 引入Ｊs -->
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js">
-    	</script>
-    	<!-- 引入CSS -->
-    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
-        <script type="text/javascript" src="jquery-aniview-master/jquery.aniview.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+        </script>
+        <!-- 引入Ｊs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js">
+        </script>
+        <!-- 引入CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
+        <script  src="jquery-aniview-master/jquery.aniview.js"></script>
+        <script  src="jquery-aniview-master/jquery.aniview.min.js"></script>
+
+		<meta charset="UTF-8">
+		<title>Welcome</title>
+
+        <script>
+            $(document).ready(function() {
+                $('.aniview').AniView();
+            });
+            var options = {
+                animateThreshold: 100,
+                scrollPollInterval: 20
+                }
+            $('.aniview').AniView(options);
+        </script>
+
+
+		
     </head>
-    <body style="background-image:url(桌布.gif);background-repeat:no-repeat;background-size:100% 100%">
-                <H1 style="font-size:130px;color:white;font-weight:900;text-align:center;line-height:300px">歡迎光臨</H1>
+    <body style="background-image:url(桌布.gif);background-repeat:no-repeat;background-size:100% 100%;font-family:Microsoft JhengHei;">
+                <div class="aniview" av-animation="fadeInDown">
+                    <H1 style="font-size:130px;color:white;font-weight:900;text-align:center;line-height:300px">歡迎光臨</H1>
+                </div>
                 <div style="text-align:center;line-height:300px">
                     <a href="my document.html">
                         <button class="ui massive inverted blue button" >

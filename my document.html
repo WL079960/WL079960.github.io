@@ -80,24 +80,6 @@
 			        else return "none";
 			    }
 
-				// $("#contactme").click(function() {
-	   //      		var form = $(".ui.form");  
-	   //      		var formData = {
-	   //          		yourName: getFieldValue(form, 'yourname'),
-			 //            yourEmail: getFieldValue(form, 'youremail'),
-			 //            tellMeWhat: getFieldValue(form, 'tellmewhat')
-	   //      		};
-
-		  //       	$.ajax({
-		  //           	url: 'https://script.google.com/macros/s/AKfycbzpesLe_OmkIXASDZrgmdMEs5-OIZH6QTIUr54HujKEGSok7dc/exec',
-		  //           	type: 'POST',
-		  //           	dataType: 'json',
-		  //           	data: formData,
-		  //           	success: function(){console.log('yes')},
-		  //           	fail: function(){console.log('no')}
-		  //       	});
-	   //    		});
-
 	      		function mySubmit() {
 	      			console.log("submit");
 	        		var form = $(".ui.form");  
@@ -138,7 +120,7 @@
 		</script>
 
     </head>
-	<body>
+	<body style="font-family:Microsoft JhengHei;">
 		
 		<div class="ui fixed grey inverted four item labeled icon menu">
 		 	<a id="home" class="item" href="#photoslide">
@@ -158,18 +140,6 @@
 		    	Contact me
 		  	</a>
 		</div>
-		<!-- <div class="ui segment">
-		<p></p>
-		</div> -->
-
-
-		<a href="#photoslide" style="position:fixed;top:30%;left:2%;z-index:99;">
-			<div style="border:2px;padding:5px;background-color:white">
-				<button style="ui big white button">Home</button>
-				
-			</div>
-		</a>
-
 		
 		<div id="photoslide" >
 			<div style="min-height:100%;width:100%;overflow:hidden">
@@ -184,9 +154,9 @@
    			</div>
    		</div>
 
-		<div style="min-height:100vh;background-color:#fff8dc" id="about-me">
+		<div style="min-height:100vh;background-image:url(背景1.jpg);background-size:100% 100%;color:white" id="about-me">
 			<p style="font-size:50px;margin-left:12.5%;padding-top:5%">About me</p>
-			<div class="ui grid">
+			<div class="ui stackable grid">
 				<div class="two wide column" ></div>
 				<div class="four wide column">
 	   				<div class="ui card">
@@ -219,7 +189,7 @@
 				</div>
 
 				<div class="eight wide column">
-					<div class="ui grid">
+					<div class="ui stackable grid">
 						<div class="six wide column"> 
 							<H1 style="font-size:50px">陳治諺</H1>
 							<H2>出生:1996/10/16</H2>
@@ -234,23 +204,33 @@
 							<div style="position:absolute;left:0%;top:10%;right:5%">
 								<div class="ui large red active indicating progress">
 									<div class="bar" style="width:50%;text-align:right">50%</div>
-									<div class="label">國文</div>
+									<div class="label" >
+										<p style="color:red">國文</p>
+									</div>
 								</div>
 								<div class="ui large orange active indicating progress">
 									<div class="bar" style="width:40%;text-align:right">40%</div>
-									<div class="label">英文</div>
+									<div class="label">
+										<p style="color:red">英文</p>
+									</div>
 								</div>
 								<div class="ui large yellow active indicating progress">
 									<div class="bar" style="width:65%;text-align:right">65%</div>
-									<div class="label">數學</div>
+									<div class="label">
+										<p style="color:red">數學</p>
+									</div>
 								</div>
 								<div class="ui large green active indicating progress">
 									<div class="bar" style="width:80%;text-align:right">80%</div>
-									<div class="label">化學</div>
+									<div class="label">
+										<p style="color:red">化學</p>
+									</div>
 								</div>
 								<div class="ui large blue active indicating progress">
 									<div class="bar" style="width:75%;text-align:right">75%</div>
-									<div class="label">物理</div>
+									<div class="label">
+										<p style="color:red">物理</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -262,12 +242,12 @@
 			</div>
 		</div>
 		
-		<div style="min-height:100vh;background-color:#e0ffff" id="my-song">
-			<div class="ui grid">
+		<div style="min-height:100vh;background-image:url(背景2.jpg);background-size:100% 100% " id="my-song">
+			<div class="ui stackable grid">
 				<div class="two wide column"></div>
 				<div class="twelve wide column">
-					<P style="font-size:50px;padding-top:5%">My favorite pianist</P>
-					<H1>
+					<P style="font-size:50px;padding-top:5%;color:white">My favorite pianist</P>
+					<H1 style="color:white">
 						新世紀音樂（New Age）風格的鋼琴家和作曲家。出生於美國底特律的Kevin Kern，現已被公認是當代新世紀鋼琴的代表人物，有「現代蕭邦」的美名。
 					</H1>
 				</div>
@@ -278,12 +258,12 @@
 			</div>
 		</div>
 
-		<div style="min-height:100vh;background-color:#faf0e6" id="contact-me">
-		<p style="font-size:50px;margin-left:12.5%;padding-top:5%">Contact me</p>
-			<div class="ui grid" style="line-height:40px">
+		<div style="min-height:100vh;background-image:url(背景3.jpg);background-size:100% 100%" id="contact-me">
+		<p style="font-size:50px;margin-left:12.5%;padding-top:5%;color:white">Contact me</p>
+			<div class="ui stackable grid" style="line-height:40px;">
 				<div class="two wide column"></div>
 				<div class="five wide column">
-					<form class="ui large form segment">
+					<form class="ui large form segment" style="background-color:#dda0dd;margin:10px">
 				        <div class="field">
 				        	<label>姓名</label>
 				          	<input name="yourname" type="text" placeholder="your name....">
@@ -296,23 +276,29 @@
 				          	<label>留言</label>
 				          	<textarea name="tellmewhat" type="text" placeholder="留個話ㄅ..."></textarea>
 				        </div>
-				        <div id="contactme" class="ui inverted blue massive submit button">Submit</div>
+				        <div id="contactme" class="ui inverted blue massive submit button">提交</div>
 				        <div class="ui error message"></div>
 				    </form>
 			  	</div>
-			  	<div class="seven wide column"></div>
+			  	<div class="seven wide column">
+			  		<div style="padding:5px;margin:60px">
+			  			<p style="font-size:35px;color:red">懂得珍惜,<br>才會發現獲得的越來越多</p>
+			  		</div>
+			  	</div>
 			  	<div class="two wide column"></div>
 			</div>
 		</div>
 
-		<div class="ui green inverted vertical footer segment"  style="font-size:20px">
+		<div class="ui dark inverted vertical footer segment"  style="font-size:20px">
 		    <div class="ui center aligned container">
 		      	<div class="ui stackable inverted divided grid">
-        			<div class="three wide column">
+        			<div class="five wide column">
           				<h4 class="ui inverted header">My Country</h4>
           				<div class="ui inverted link list">
-            				<i class="massive tw flag"></i>
-            				<p>Taiwan</p>
+            				<img src="Taiwan.gif">
+            				<a href="http://www.taiwan.gov.tw/">
+            					<p>Taiwan</p>
+            				</a>
           				</div>
         			</div>
         			<div class="three wide column">
@@ -323,7 +309,7 @@
             				<a class="item" href="http://nchuit.cc/" target="_blnak">My group</a>
           				</div>
         			</div>
-        			<div class="ten wide column">
+        			<div class="eight wide column">
           				<h4 class="ui inverted header" >Thanks for your watching</h4>
           				<p style="text-align:left">If you have any question,you can use contact me segment send message to me.In addition,you can be my friend through Facebook.</p>
         			</div>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>My Document</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    	<link href="ninja-slider/ninja-slider.css" rel="stylesheet" />
+   		<script src="ninja-slider/ninja-slider.js" type="text/javascript"></script>
+
+   		<script type="text/javascript" src="jquery-aniview-master/jquery.aniview.js"></script>
+
+		<!-- 引入Ｊquery -->
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    	</script>
+    	<!-- 引入Ｊs -->
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.js">
+    	</script>
+    	<!-- 引入CSS -->
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.6/semantic.min.css">
+
+    	<script>
+		    $(document).ready(function() {
+		    	var photoid = "1jJtDt_9ekCNWXycc6bcYuNQnttn6o8NT0AKCBnlBx24";
+		    	$.ajax({
+		    		url:'https://spreadsheets.google.com/feeds/list/' + photoid + '/1/public/values?alt=json',
+		    		async:false,
+		    		type:'GET',
+		    	})
+
+		    	.done(function(data){
+		    		console.log("成功");
+		    		for (var i = 0 ; i < (data.feed.entry).length ; i++){
+            		var text = data.feed.entry[i]['gsx$text']['$t'];
+            		var img = data.feed.entry[i]['gsx$img']['$t'];
+            		var photo_inner = $.parseHTML("<li><a class=\"ns-img\" href=\"" + img + "\"/></a><div class=\"caption\" style=\"text-align:left;color:green;font-size:80px\"><i>"+ text +"<i></div></li>");
+            		$('#putphoto').append(photo_inner);
+          			}
+		    	})
+
+		    	.fail(function(){
+		    		console.log("失敗");
+		    	})
+
+		    	.always(function(){
+		    		console.log("完成");
+		    	});
+
+			    $('.ui.form.segment').form({
+			      	on: 'blur',
+			      	fields: {
+			        	empty: {
+			          		identifier  : 'yourname',
+			          		rules: [{
+			              		type   : 'empty',
+			              		prompt : 'Please enter your name'
+			            	}]
+			        	},
+				        email: {
+				          	identifier  : 'youremail',
+				          	rules: [{
+				              	type   : 'email',
+				              	prompt : 'Please enter a valid e-mail'
+				            }]
+				        },
+				        tellempty: {
+				          	identifier  : 'tellmewhat',
+				          	rules: [{
+				              	type   : 'empty',
+				              	prompt : 'Please enter value in You want to tell me what'
+				            }]
+			        	}
+			    	},
+			    	onSuccess: mySubmit	
+				});
+
+			    function getFieldValue(myform, fieldName) {
+			        var text = myform.form('get value', fieldName);
+			        if (text != "") return text;
+			        else return "none";
+			    }
+
+				// $("#contactme").click(function() {
+	   //      		var form = $(".ui.form");  
+	   //      		var formData = {
+	   //          		yourName: getFieldValue(form, 'yourname'),
+			 //            yourEmail: getFieldValue(form, 'youremail'),
+			 //            tellMeWhat: getFieldValue(form, 'tellmewhat')
+	   //      		};
+
+		  //       	$.ajax({
+		  //           	url: 'https://script.google.com/macros/s/AKfycbzpesLe_OmkIXASDZrgmdMEs5-OIZH6QTIUr54HujKEGSok7dc/exec',
+		  //           	type: 'POST',
+		  //           	dataType: 'json',
+		  //           	data: formData,
+		  //           	success: function(){console.log('yes')},
+		  //           	fail: function(){console.log('no')}
+		  //       	});
+	   //    		});
+
+	      		function mySubmit() {
+	      			console.log("submit");
+	        		var form = $(".ui.form");  
+	        		var formData = {
+	            		yourName: getFieldValue(form, 'yourname'),
+			            yourEmail: getFieldValue(form, 'youremail'),
+			            tellMeWhat: getFieldValue(form, 'tellmewhat')
+	        		};
+
+		        	$.ajax({
+		            	url: 'https://script.google.com/macros/s/AKfycbzpesLe_OmkIXASDZrgmdMEs5-OIZH6QTIUr54HujKEGSok7dc/exec',
+		            	type: 'POST',
+		            	dataType: 'json',
+		            	data: formData,
+		            	success: function(){console.log('yes')},
+		            	fail: function(){console.log('no')}
+		        	});	      			
+	      		}
+	  
+
+
+      			$("#home").click(function(){
+      				$('html,body').animate({scrollTop:$('#photoslide').offset().top},1500);
+      			});
+
+      			$("#aboutme").click(function(){
+      				$('html,body').animate({scrollTop:$('#about-me').offset().top},1500);
+      			});
+
+      			$("#favorite").click(function(){
+      				$('html,body').animate({scrollTop:$('#my-song').offset().top},1500);
+      			});
+
+      			$("#contact").click(function(){
+      				$('html,body').animate({scrollTop:$('#contact-me').offset().top},1500);
+      			});
+      		});
+		</script>
+
+    </head>
+	<body>
+		
+		<div class="ui fixed grey inverted four item labeled icon menu">
+		 	<a id="home" class="item" href="#photoslide">
+		 		<i class="home icon"></i>
+		    	Home
+		  	</a>
+		  	<a id="aboutme" class="item" href="#about-me">
+		  		<i class="user icon"></i>
+		    	About me
+		  	</a>
+		  	<a id="favorite" class="item" href="#my-song">
+		  		<i class="birthday icon"></i>
+		    	My favorite
+		  	</a>
+		  	<a id="contact" class="item" href="#contact-me">
+		    	<i class="comment icon"></i>
+		    	Contact me
+		  	</a>
+		</div>
+		<!-- <div class="ui segment">
+		<p></p>
+		</div> -->
+
+
+		<a href="#photoslide" style="position:fixed;top:30%;left:2%;z-index:99;">
+			<div style="border:2px;padding:5px;background-color:white">
+				<button style="ui big white button">Home</button>
+				
+			</div>
+		</a>
+
+		
+		<div id="photoslide" >
+			<div style="min-height:100%;width:100%;overflow:hidden">
+				<div id="ninja-slider">	        	
+		            <ul id="putphoto">
+		            </ul>
+		            <div class="navsWrapper">
+	            		<div id="ninja-slider-prev"></div>
+	           			<div id="ninja-slider-next"></div>
+	        		</div>
+        		</div>
+   			</div>
+   		</div>
+
+		<div style="min-height:100vh;background-color:#fff8dc" id="about-me">
+			<p style="font-size:50px;margin-left:12.5%;padding-top:5%">About me</p>
+			<div class="ui grid">
+				<div class="two wide column" ></div>
+				<div class="four wide column">
+	   				<div class="ui card">
+					  	<div class="image">
+					    	<img src="https://scontent-tpe1-1.xx.fbcdn.net/hphotos-frc3/t31.0-8/s960x960/240266_419865791394569_673749150_o.jpg">
+					  	</div>
+					  	<div class="content">
+					   		<a class="header">陳治諺</a>
+					    	<div class="meta">
+					      		<span class="date">Bithday 1996/10/16</span>
+					    	</div>
+					    	<div class="description">
+					      		台灣台中人~中興大學材料系大一生
+					    	</div>
+				  		</div>
+					</div>
+					<br/>
+					<a href="https://www.facebook.com/profile.php?id=100001134569098" target="blank">
+						<button class="ui huge facebook button" id="fb">
+								<i class="facebook icon"></i>
+								Facebook
+						</button>
+					</a>
+					<a href="https://github.com/WL079960" target="blank">
+						<button class="ui huge active button">
+								<i class="desktop icon"></i>
+								~Github~
+						</button>
+					</a>
+				</div>
+
+				<div class="eight wide column">
+					<div class="ui grid">
+						<div class="six wide column"> 
+							<H1 style="font-size:50px">陳治諺</H1>
+							<H2>出生:1996/10/16</H2>
+							<H2>台灣台中人</H2>
+							<H2>星座:天秤座</H2>
+							<H2>血型:O型</H2>
+							<H2>興趣:聽音樂</H2>
+							<H2>現在就讀中興大學材料系</H2>
+							<br>
+						</div>
+						<div class="ten wide column">
+							<div style="position:absolute;left:0%;top:10%;right:5%">
+								<div class="ui large red active indicating progress">
+									<div class="bar" style="width:50%;text-align:right">50%</div>
+									<div class="label">國文</div>
+								</div>
+								<div class="ui large orange active indicating progress">
+									<div class="bar" style="width:40%;text-align:right">40%</div>
+									<div class="label">英文</div>
+								</div>
+								<div class="ui large yellow active indicating progress">
+									<div class="bar" style="width:65%;text-align:right">65%</div>
+									<div class="label">數學</div>
+								</div>
+								<div class="ui large green active indicating progress">
+									<div class="bar" style="width:80%;text-align:right">80%</div>
+									<div class="label">化學</div>
+								</div>
+								<div class="ui large blue active indicating progress">
+									<div class="bar" style="width:75%;text-align:right">75%</div>
+									<div class="label">物理</div>
+								</div>
+							</div>
+						</div>
+						<h1>你好我是陳治諺  :D<br>
+			          	很高興你來觀賞我的網站，若你想更認識我的話，可以加我的FB或在網頁的最下端發送訊息給我。若你只是隨便瀏覽的話，我也是非常的歡迎。</h1>
+					</div>
+				</div>
+				<div class="two wide column"></div>
+			</div>
+		</div>
+		
+		<div style="min-height:100vh;background-color:#e0ffff" id="my-song">
+			<div class="ui grid">
+				<div class="two wide column"></div>
+				<div class="twelve wide column">
+					<P style="font-size:50px;padding-top:5%">My favorite pianist</P>
+					<H1>
+						新世紀音樂（New Age）風格的鋼琴家和作曲家。出生於美國底特律的Kevin Kern，現已被公認是當代新世紀鋼琴的代表人物，有「現代蕭邦」的美名。
+					</H1>
+				</div>
+				<div class="two wide column"></div>
+			</div>
+			<div style="margin-left:15%">
+				<iframe src='http://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1aqSkvJCTyQy7cRWd9OW4egPSjIAKp6goYdu0v1ELHPY&font=Default&lang=zh-cn&debug=true&initial_zoom=2&height=650' width='80%' height='650' frameborder='0'></iframe>
+			</div>
+		</div>
+
+		<div style="min-height:100vh;background-color:#faf0e6" id="contact-me">
+		<p style="font-size:50px;margin-left:12.5%;padding-top:5%">Contact me</p>
+			<div class="ui grid" style="line-height:40px">
+				<div class="two wide column"></div>
+				<div class="five wide column">
+					<form class="ui large form segment">
+				        <div class="field">
+				        	<label>姓名</label>
+				          	<input name="yourname" type="text" placeholder="your name....">
+				        </div>
+				        <div class="field">
+				          	<label>Email</label>
+				          	<input name="youremail" type="text" placeholder="your email...">
+				        </div>
+				        <div class="field">
+				          	<label>留言</label>
+				          	<textarea name="tellmewhat" type="text" placeholder="留個話ㄅ..."></textarea>
+				        </div>
+				        <div id="contactme" class="ui inverted blue massive submit button">Submit</div>
+				        <div class="ui error message"></div>
+				    </form>
+			  	</div>
+			  	<div class="seven wide column"></div>
+			  	<div class="two wide column"></div>
+			</div>
+		</div>
+
+		<div class="ui green inverted vertical footer segment"  style="font-size:20px">
+		    <div class="ui center aligned container">
+		      	<div class="ui stackable inverted divided grid">
+        			<div class="three wide column">
+          				<h4 class="ui inverted header">My Country</h4>
+          				<div class="ui inverted link list">
+            				<i class="massive tw flag"></i>
+            				<p>Taiwan</p>
+          				</div>
+        			</div>
+        			<div class="three wide column">
+          				<h4 class="ui inverted header">Occupation</h4>
+          				<div class="ui inverted link list">
+            				<p>University Student</p>
+            				<a class="item" href="http://www.nchu.edu.tw/index1.php" target="_blnak">My school</a>
+            				<a class="item" href="http://nchuit.cc/" target="_blnak">My group</a>
+          				</div>
+        			</div>
+        			<div class="ten wide column">
+          				<h4 class="ui inverted header" >Thanks for your watching</h4>
+          				<p style="text-align:left">If you have any question,you can use contact me segment send message to me.In addition,you can be my friend through Facebook.</p>
+        			</div>
+      			</div>
+      			<div class="ui inverted divider"></div>
+      			<div class="ui horizontal inverted small divided link list">
+        			<a class="item" href="http://semantic-ui.com/examples/sticky.html#">Designed by CHEN ZHI-YAN</a>
+        			<a class="item" href="#">Privacy Policy</a>
+      			</div>
+    		</div>
+  		</div>
+
+	</body>
+</html>

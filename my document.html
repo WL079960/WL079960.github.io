@@ -120,7 +120,7 @@
 		</script>
 
     </head>
-	<body style="font-family:Microsoft JhengHei;">
+	<body style="font-family:Microsoft JhengHei;background-color:dark">
 		
 		<div class="ui fixed grey inverted four item labeled icon menu">
 		 	<a id="home" class="item" href="#photoslide">
@@ -142,7 +142,7 @@
 		</div>
 		
 		<div id="photoslide" >
-			<div style="min-height:100%;width:100%;overflow:hidden;background-color:dark;margin-color:dark;border-color:dark">
+			<div style="min-height:100%;width:100%;overflow;hidden;z-index:0">
 				<div id="ninja-slider">	        	
 		            <ul id="putphoto">
 		            </ul>
@@ -154,7 +154,23 @@
    			</div>
    		</div>
 
-		<div style="min-height:100vh;background-image:url(背景1.jpg);background-size:100% 100%;color:white" id="about-me">
+   		<div style="position:fixed;top:80%;right:3%;z-index:99;background-color:#ffffe0;padding-left:10px;
+					padding-right:10px;padding-top:5px;padding-bottom:5px;border:black solid 5px;border-radius: 5px;margin:0px">
+			<p style="font-size:25px;margin:2px;text-align:center">歡迎看看喔!</p>
+			<div  style="text-align:center;margin:3px">
+				<a href="http://nchuit.cc/" target="_blnak">
+	   				<button class="ui big blue button">
+						<i class="home icon"></i>
+	   					中興資訊社
+	   				</button><br>
+	   			</a>
+   			</div>
+   			<a href="https://www.facebook.com/it.nchu/?fref=ts" target="blank">
+				<button class="ui big red button">中興資訊社粉絲團</button>
+			</a>
+		</div>
+
+		<div style="z-index:20;min-height:100vh;background-image:url(背景1.jpg);background-size:100% 100%;color:white" id="about-me">
 			<p style="font-size:50px;margin-left:12.5%;padding-top:5%">About me</p>
 			<div class="ui stackable grid">
 				<div class="two wide column" ></div>
@@ -276,7 +292,7 @@
 				          	<label>留言</label>
 				          	<textarea name="tellmewhat" type="text" placeholder="留個話ㄅ..."></textarea>
 				        </div>
-				        <div id="contactme" class="ui inverted blue massive submit button">提交</div>
+				        <div id="contactme" class="ui inverted red massive submit button">提交</div>
 				        <div class="ui error message"></div>
 				    </form>
 			  	</div>
